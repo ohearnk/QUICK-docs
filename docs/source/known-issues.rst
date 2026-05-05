@@ -58,16 +58,14 @@ be less accurate if the default density matrix cutoff (1.0E-6) is used.
 
 Solution: Tighten the cutoff value to 1.0E-7 or 1.0E-8.
 
-3. Wrong gradients in MPI+CUDA version
-**************************************
+3. SAD guess producing wrong results
+************************************
 
-If one launches MPI+CUDA version with a number of processes greater than the
-available GPUs on the system, it is possible to result in wrong gradients on
-some hardware. 
+The SAD guess refactored after QUICK-21.03 release produces wrong results.
+The old SAD guess routines were replaced after release of QUICK-21.03.
+This was done because the old SAD guess is extremely inefficient.
+However, the new SAD guess produces wrong results. Thus, the users should only
+use the basis sets provided in the User Manual. For those basis sets we have
+precomputed the guess.
 
-Solution: Always launch the MPI+CUDA version with a number of processes less
-than or equal to the available number of GPUs (i.e. mpirun -np N ; where N <= #
-of GPUs)  
-  
-
-*Last updated by Madu Manathunga on 03/03/2022.*
+*Last updated by Vikrant Tripathy on 05/04/2026.*
